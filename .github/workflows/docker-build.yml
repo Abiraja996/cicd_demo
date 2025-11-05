@@ -1,0 +1,27 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches:
+      - main  # Run CI/CD when you push to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Docker Buildx (needed for building Docker images)
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Step 3: Build the Docker image
+      - name: Build Docker image
+        run: docker build -t cicd-demo:latest .
+
+      # Step 4: (Optional) Verify Docker image built successfully
+      - name: Verify Docker image
+        run: docker images
