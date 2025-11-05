@@ -1,4 +1,4 @@
-name: Build and Push Docker Image modified1
+name: Build and Push Docker Image modified2
 
 on:
   push:
